@@ -1,14 +1,9 @@
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker , create_async_engine
+import asyncio
+from aiogram import Bot, Dispatcher
 
+from database import async_main
+from config import TOKEN
 
-engine = create_async_engine(url='sqlite+aiosqlite:///db.sqlite3')
-
-async_session = async_sessionmaker(engine)
-
-class Base(AsyncAttrs, DeclarativeBase):
-    pass
-
-class User(Base):
-    __tablename__ = "user"
-    
+async def main():
+    await async_main()
+    bot = Bot(token='')
